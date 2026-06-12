@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergie & Unverträglichkeits-Test · Barbara Wolf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --burg:        #7B1D3A;
+            --burg-mid:    #9B3D5A;
+            --burg-pale:   #F9EEF2;
+            --cream:       #F7F3EE;
+            --warm-white:  #FEFCFA;
+            --beige:       #EDE5D8;
+            --beige-line:  #DDD0C0;
+            --text-dark:   #2C1A1A;
+            --text-mid:    #6B4A4A;
+            --text-light:  #9B8070;
+            --green-dark:  #2A5438;
+            --green-pale:  #EAF5EE;
+            --green-line:  #A4D4B0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', -apple-system, sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* ════════════════════════════════
+           HEADER
+        ════════════════════════════════ */
+        .site-header {
+            background: var(--warm-white);
+            border-bottom: 1px solid var(--beige-line);
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-header .logo {
+            height: 52px;
+            display: block;
+        }
+
+        .site-header .header-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--text-light);
+            letter-spacing: 0.03em;
+        }
+
+        /* ════════════════════════════════
+           HERO
+        ════════════════════════════════ */
+        .hero {
+            position: relative;
+            height: 440px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(30, 10, 10, 0.48) 0%,
+                rgba(30, 10, 10, 0.68) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: #fff;
+            padding: 0 28px;
+            max-width: 680px;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 14px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+        }
+
+        .hero-content p {
+            font-size: 17px;
+            font-weight: 300;
+            opacity: 0.88;
+            line-height: 1.65;
+        }
+
+        /* ════════════════════════════════
+           MAIN WRAPPER
+        ════════════════════════════════ */
+        .main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 52px 24px 96px;
+        }
+
+        /* ════════════════════════════════
+           SHARED CARD
+        ════════════════════════════════ */
+        .card {
+            background: var(--warm-white);
+            border: 1px solid var(--beige-line);
+            border-radius: 2px;
+            box-shadow: 0 6px 32px rgba(44, 26, 26, 0.09);
+        }
+
+        .section-divider {
+            width: 44px;
+            height: 2px;
+            background: var(--burg);
+            margin: 0 auto 28px;
+        }
+
+        /* ════════════════════════════════
+           START SCREEN
+        ════════════════════════════════ */
+        #startScreen { padding: 56px 52px; text-align: center; }
+
+        #startScreen h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.35;
+            margin-bottom: 18px;
+        }
+
+        #startScreen .lead {
+            font-size: 16px;
+            color: var(--text-mid);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .meta-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--burg);
+            flex-shrink: 0;
+        }
+
+        .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            border: 1px solid var(--beige-line);
+            background: var(--cream);
+            color: var(--text-mid);
+            font-size: 13px;
+            padding: 6px 15px;
+            border-radius: 20px;
+        }
+
+        /* ════════════════════════════════
+           BUTTONS
+        ════════════════════════════════ */
+        .btn-primary {
+            display: inline-block;
+            background: var(--burg);
+            color: #fff;
+            border: none;
+            padding: 16px 52px;
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: var(--burg-mid);
+            transform: translateY(-1px);
+        }
+
+        /* ════════════════════════════════
+           PROGRESS BAR
+        ════════════════════════════════ */
+        .progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 36px;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 3px;
+            background: var(--beige);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--burg);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        /* ════════════════════════════════
+           QUESTION
+        ════════════════════════════════ */
+        .question-body {
+            padding: 32px 36px 28px;
+            animation: fadeUp 0.28s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0);    }
+        }
+
+        .q-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--burg);
+            margin-bottom: 10px;
+        }
+
+        .q-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .q-sub {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.55;
+        }
+
+        .q-multi-hint {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--burg);
+            margin-bottom: 14px;
+        }
+
+        /* ════════════════════════════════
+           OPTIONS
+        ════════════════════════════════ */
+        .options { display: flex; flex-direction: column; gap: 9px; }
+
+        .opt-btn {
+            background: var(--warm-white);
+            border: 1px solid var(--beige-line);
+            border-radius: 2px;
+            padding: 13px 16px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.16s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            line-height: 1.4;
+        }
+
+        .opt-btn:hover {
+            border-color: var(--burg);
+            background: var(--burg-pale);
+        }
+
+        .opt-btn.selected {
+            border-color: var(--burg);
+            background: var(--burg-pale);
+            font-weight: 500;
+        }
+
+        .opt-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid var(--beige-line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            color: transparent;
+            transition: all 0.16s;
+        }
+
+        .opt-btn.selected .opt-check {
+            background: var(--burg);
+            border-color: var(--burg);
+            color: #fff;
+        }
+
+        .opt-emoji { font-size: 17px; flex-shrink: 0; }
+
+        /* ════════════════════════════════
+           QUIZ FOOTER
+        ════════════════════════════════ */
+        .quiz-footer {
+            padding: 18px 36px 30px;
+            border-top: 1px solid var(--beige);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-next {
+            background: var(--burg);
+            color: #fff;
+            border: none;
+            padding: 13px 38px;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: all 0.18s;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .btn-next.active { opacity: 1; pointer-events: auto; }
+        .btn-next.active:hover { background: var(--burg-mid); transform: translateY(-1px); }
+
+        /* ════════════════════════════════
+           RESULTS
+        ════════════════════════════════ */
+        .results-top {
+            text-align: center;
+            padding: 48px 40px 28px;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .results-top h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .results-top p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+
+        .results-body { padding: 28px 36px 8px; }
+
+        .results-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin: 24px 0 12px;
+        }
+
+        .results-section-label:first-child { margin-top: 0; }
+        .results-section-label.allergie           { color: var(--burg); }
+        .results-section-label.unvertraeglichkeit { color: var(--green-dark); }
+
+        .result-item {
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 22px 22px 18px;
+            margin-bottom: 12px;
+        }
+
+        .result-item.allergie {
+            background: #FDF5F7;
+            border-color: #D4A0B0;
+        }
+
+        .result-item.unvertraeglichkeit {
+            background: var(--green-pale);
+            border-color: var(--green-line);
+        }
+
+        .result-item-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .result-icon { font-size: 24px; flex-shrink: 0; padding-top: 2px; }
+
+        .result-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .result-type-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .allergie .result-type-tag           { background: #F0D0DA; color: var(--burg); }
+        .unvertraeglichkeit .result-type-tag { background: #C6F0D4; color: var(--green-dark); }
+
+        .result-desc {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.75;
+            margin-bottom: 12px;
+        }
+
+        .result-tips { list-style: none; }
+
+        .result-tips li {
+            font-size: 13px;
+            color: var(--text-mid);
+            padding: 3px 0 3px 16px;
+            position: relative;
+            line-height: 1.55;
+        }
+
+        .result-tips li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--text-light);
+        }
+
+        .match-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .match-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            width: 108px;
+            flex-shrink: 0;
+        }
+
+        .match-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(0,0,0,0.08);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .match-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1s ease;
+        }
+
+        .allergie .match-fill            { background: var(--burg); }
+        .unvertraeglichkeit .match-fill  { background: var(--green-dark); }
+
+        .match-pct {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-light);
+            width: 34px;
+            text-align: right;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 44px 24px;
+            color: var(--text-mid);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ════════════════════════════════
+           DISCLAIMER & RESTART
+        ════════════════════════════════ */
+        .disclaimer {
+            margin: 8px 36px 24px;
+            border-left: 3px solid #C8A020;
+            background: #FFFBF0;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: #7A5C00;
+            line-height: 1.65;
+        }
+
+        .results-footer { padding: 0 36px 36px; }
+
+        .btn-restart {
+            width: 100%;
+            padding: 13px;
+            background: transparent;
+            border: 1px solid var(--beige-line);
+            color: var(--text-mid);
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: all 0.18s;
+        }
+
+        .btn-restart:hover {
+            border-color: var(--burg);
+            color: var(--burg);
+        }
+
+        /* ════════════════════════════════
+           SITE FOOTER
+        ════════════════════════════════ */
+        .site-footer {
+            text-align: center;
+            padding: 44px 24px;
+            border-top: 1px solid var(--beige-line);
+            background: var(--warm-white);
+        }
+
+        .site-footer .footer-logo {
+            height: 38px;
+            opacity: 0.55;
+            margin-bottom: 14px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-footer p {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .site-footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 1px solid var(--beige-line);
+        }
+
+        .site-footer a:hover { color: var(--burg); border-color: var(--burg); }
+
+        .hidden { display: none; }
+
+        /* ════════════════════════════════
+           RESPONSIVE
+        ════════════════════════════════ */
+        @media (max-width: 540px) {
+            .hero-content h1 { font-size: 30px; }
+            .hero { height: 360px; }
+            #startScreen { padding: 40px 26px; }
+            .progress-wrap,
+            .question-body,
+            .quiz-footer,
+            .results-top,
+            .results-body,
+            .results-footer,
+            .disclaimer { padding-left: 22px; padding-right: 22px; }
+            .q-text { font-size: 19px; }
+            .site-header .header-title { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════ HEADER ════ -->
+<header class="site-header">
+    <img class="logo"
+         src="https://barbarawolf.li/wp-content/uploads/2023/03/bw-red-zeichenflaeche-1.png"
+         alt="Barbara Wolf"
+         onerror="this.style.display='none'">
+    <span class="header-title">Allergie &amp; Unverträglichkeits-Test</span>
+</header>
+
+<!-- ════ HERO ════ -->
+<div class="hero">
+    <img class="hero-img"
+         src="https://barbarawolf.li/wp-content/uploads/2026/05/Sommer-Picknick.jpg"
+         alt="Sommer Picknick">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Barbara Wolf · Naturheilpraxis</p>
+        <h1>Allergie oder Unverträglichkeit?</h1>
+        <p>Beantworte 11 kurze Fragen und erfahre, was hinter deinen Beschwerden stecken könnte.</p>
+    </div>
+</div>
+
+<!-- ════ MAIN ════ -->
+<div class="main">
+
+    <!-- START -->
+    <div class="card" id="startScreen">
+        <div class="section-divider"></div>
+        <h2>Finde heraus, womit du reagierst</h2>
+        <p class="lead">
+            Viele Menschen leben jahrelang mit Bauchschmerzen, Hautreaktionen oder Schnupfen,
+            ohne zu wissen, woher sie kommen. Dieser Test gibt dir eine erste Orientierung —
+            schnell, kostenlos und ohne Anmeldung.
+        </p>
+        <div class="meta-row">
+            <span class="meta-item"><span class="meta-dot"></span>11 Fragen</span>
+            <span class="meta-item"><span class="meta-dot"></span>Ca. 3 Minuten</span>
+            <span class="meta-item"><span class="meta-dot"></span>8 Kategorien</span>
+        </div>
+        <div class="badge-row">
+            <span class="badge">🥛 Laktose</span>
+            <span class="badge">🌾 Gluten</span>
+            <span class="badge">🍷 Histamin</span>
+            <span class="badge">🍎 Fruktose</span>
+            <span class="badge">🌸 Pollen</span>
+            <span class="badge">🏠 Hausstaub</span>
+            <span class="badge">🐱 Tierhaare</span>
+            <span class="badge">🥜 Nahrungsmittel</span>
+        </div>
+        <button class="btn-primary" onclick="startQuiz()">Test starten</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="card hidden" id="quizScreen">
+        <div class="progress-wrap">
+            <span class="progress-label" id="stepLabel">1 / 11</span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width:0%"></div>
+            </div>
+            <span class="progress-label" id="progressPct">0%</span>
+        </div>
+        <div id="questionArea" class="question-body"></div>
+        <div class="quiz-footer">
+            <button class="btn-next" id="nextBtn" onclick="nextQuestion()">Weiter →</button>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="card hidden" id="resultsScreen">
+        <div class="results-top">
+            <div class="section-divider"></div>
+            <h2>Deine Auswertung</h2>
+            <p>Basierend auf deinen Antworten könnten folgende Bereiche für dich relevant sein.</p>
+        </div>
+        <div class="results-body" id="resultsContainer"></div>
+        <div class="disclaimer">
+            <strong>Wichtiger Hinweis:</strong> Dieser Test dient ausschließlich zur ersten Orientierung
+            und ersetzt keine ärztliche Diagnose. Bei anhaltenden Beschwerden wende dich bitte
+            an einen Arzt oder Allergologen.
+        </div>
+        <div class="results-footer">
+            <button class="btn-restart" onclick="restartQuiz()">↺ Test wiederholen</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- ════ FOOTER ════ -->
+<footer class="site-footer">
+    <img class="footer-logo"
+         src="https://barbarawolf.li/wp-content/uploads/2023/03/bw-red-zeichenflaeche-1.png"
+         alt="BW"
+         onerror="this.style.display='none'">
+    <p>
+        © Barbara Wolf &nbsp;·&nbsp; Städtle 1, 9490 Vaduz, Liechtenstein<br>
+        <a href="https://barbarawolf.li" target="_blank">barbarawolf.li</a>
+        &nbsp;·&nbsp; +41 78 694 31 53
+    </p>
+</footer>
+
+<script>
+const questions = [
+    {
+        id: 'symptoms',
+        text: 'Welche Symptome hast du?',
+        subtitle: 'Wähle alle zutreffenden aus',
+        type: 'multiple',
+        options: [
+            { text: 'Bauchschmerzen / Blähungen',         emoji: '🤢', scores: { laktose:1, gluten:1, fruktose:1, histamin:1 } },
+            { text: 'Durchfall / weicher Stuhl',           emoji: '💨', scores: { laktose:1, gluten:1, fruktose:1 } },
+            { text: 'Übelkeit / Erbrechen',                emoji: '😖', scores: { nahrung:1, histamin:1 } },
+            { text: 'Hautausschlag / Juckreiz',            emoji: '🔴', scores: { nahrung:1, histamin:1 } },
+            { text: 'Nesselsucht (rote Quaddeln)',         emoji: '🌿', scores: { nahrung:2 } },
+            { text: 'Schnupfen / Niesen',                  emoji: '🤧', scores: { pollen:1, hausstaub:1, tiere:1 } },
+            { text: 'Tränende / juckende Augen',           emoji: '👁️', scores: { pollen:1, hausstaub:1, tiere:1 } },
+            { text: 'Kopfschmerzen / Migräne',             emoji: '🤕', scores: { histamin:2 } },
+            { text: 'Atemnot / Engegefühl',                emoji: '😮‍💨', scores: { pollen:1, hausstaub:1, nahrung:1 } },
+            { text: 'Müdigkeit / anhaltende Erschöpfung',  emoji: '😴', scores: { gluten:1 } },
+        ]
+    },
+    {
+        id: 'timing',
+        text: 'Wann treten deine Symptome auf?',
+        subtitle: 'Zeitraum nach dem Auslöser — Essen, Tierkontakt, staubige Umgebung …',
+        type: 'single',
+        options: [
+            { text: '⚡ Sofort — innerhalb von Minuten',     scores: { nahrung:2 } },
+            { text: '⏰ Nach 30 Minuten bis 2 Stunden',      scores: { laktose:1, histamin:1 } },
+            { text: '🕐 Erst nach mehreren Stunden',         scores: { gluten:1, fruktose:1 } },
+            { text: '❓ Ich bin mir nicht sicher',           scores: {} },
+        ]
+    },
+    {
+        id: 'dairy',
+        text: 'Reagierst du auf Milch oder Milchprodukte?',
+        subtitle: 'Milch, Joghurt, Käse, Butter, Eis',
+        type: 'single',
+        options: [
+            { text: 'Ja — auch schon kleine Mengen',  scores: { laktose:3 } },
+            { text: 'Ja — vor allem größere Mengen',  scores: { laktose:2 } },
+            { text: 'Manchmal, unregelmäßig',         scores: { laktose:1 } },
+            { text: 'Nein',                           scores: {} },
+        ]
+    },
+    {
+        id: 'gluten',
+        text: 'Reagierst du auf Brot, Pasta oder Getreide?',
+        subtitle: 'Weizen, Roggen, Gerste, Dinkel',
+        type: 'single',
+        options: [
+            { text: 'Ja — auch schon kleine Mengen',  scores: { gluten:3 } },
+            { text: 'Ja — vor allem größere Mengen',  scores: { gluten:2 } },
+            { text: 'Manchmal, unregelmäßig',         scores: { gluten:1 } },
+            { text: 'Nein',                           scores: {} },
+        ]
+    },
+    {
+        id: 'histamine',
+        text: 'Reagierst du auf histaminreiche Speisen?',
+        subtitle: 'Rotwein, gereifter Käse, Schokolade, Salami, Thunfisch aus der Dose',
+        type: 'single',
+        options: [
+            { text: 'Ja, sehr regelmäßig',  scores: { histamin:3 } },
+            { text: 'Manchmal',             scores: { histamin:2 } },
+            { text: 'Selten',               scores: { histamin:1 } },
+            { text: 'Nein',                 scores: {} },
+        ]
+    },
+    {
+        id: 'fructose',
+        text: 'Bekommst du nach Obst oder Süßem Bauchbeschwerden?',
+        subtitle: 'Äpfel, Birnen, Kirschen, Fruchtsäfte, Honig, Agavensirup',
+        type: 'single',
+        options: [
+            { text: 'Ja, sehr regelmäßig',  scores: { fruktose:3 } },
+            { text: 'Manchmal',             scores: { fruktose:1 } },
+            { text: 'Nein',                 scores: {} },
+        ]
+    },
+    {
+        id: 'pollen',
+        text: 'Verschlechtern sich deine Symptome im Frühling oder Sommer?',
+        subtitle: 'Blütezeit März bis August — besonders bei trockenem, windigem Wetter',
+        type: 'single',
+        options: [
+            { text: 'Ja, deutlich schlechter',  scores: { pollen:3 } },
+            { text: 'Etwas schlechter',          scores: { pollen:1 } },
+            { text: 'Nein, keine Änderung',      scores: {} },
+        ]
+    },
+    {
+        id: 'dust',
+        text: 'Hast du Symptome in staubigen Umgebungen?',
+        subtitle: 'Beim Staubsaugen, in alten Räumen, morgens beim Aufwachen',
+        type: 'single',
+        options: [
+            { text: 'Ja, fast immer',  scores: { hausstaub:3 } },
+            { text: 'Manchmal',        scores: { hausstaub:1 } },
+            { text: 'Nein',            scores: {} },
+        ]
+    },
+    {
+        id: 'animals',
+        text: 'Reagierst du in der Nähe von Tieren?',
+        subtitle: 'Katzen, Hunde, Pferde, Kaninchen',
+        type: 'single',
+        options: [
+            { text: 'Ja, bei Katzen und / oder Hunden',  scores: { tiere:3 } },
+            { text: 'Ja, bei bestimmten Tieren',          scores: { tiere:2 } },
+            { text: 'Selten / kaum',                      scores: { tiere:1 } },
+            { text: 'Nein',                               scores: {} },
+        ]
+    },
+    {
+        id: 'nuts',
+        text: 'Reagierst du auf Nüsse?',
+        subtitle: 'Erdnüsse, Walnüsse, Cashews, Haselnüsse, Mandeln',
+        type: 'single',
+        options: [
+            { text: 'Ja, sofort und stark',  scores: { nahrung:3 } },
+            { text: 'Ja, aber eher mild',    scores: { nahrung:2 } },
+            { text: 'Selten / kaum',         scores: { nahrung:1 } },
+            { text: 'Nein',                  scores: {} },
+        ]
+    },
+    {
+        id: 'egg_fish',
+        text: 'Reagierst du auf Eier, Fisch oder Meeresfrüchte?',
+        type: 'single',
+        options: [
+            { text: 'Ja, auf Eier',                   scores: { nahrung:2 } },
+            { text: 'Ja, auf Fisch / Meeresfrüchte',  scores: { nahrung:2 } },
+            { text: 'Ja, auf beides',                  scores: { nahrung:3 } },
+            { text: 'Nein',                            scores: {} },
+        ]
+    },
+];
+
+const resultData = {
+    laktose: {
+        name: 'Laktoseintoleranz',
+        type: 'unvertraeglichkeit',
+        icon: '🥛',
+        description: 'Deine Antworten deuten auf eine mögliche Laktoseintoleranz hin. Der Körper kann den Milchzucker nicht ausreichend verdauen, weil das Enzym Laktase fehlt oder zu wenig vorhanden ist. Symptome treten typischerweise 30 Minuten bis 2 Stunden nach dem Verzehr auf.',
+        tips: ['Laktosefreie Produkte ausprobieren', 'Kleine Mengen Milch oft besser verträglich als große', 'Hartkäse enthält sehr wenig Laktose', 'Arzttest: H₂-Atemtest für gesicherte Diagnose'],
+        maxScore: 6,
+    },
+    gluten: {
+        name: 'Glutenunverträglichkeit / Zöliakie',
+        type: 'unvertraeglichkeit',
+        icon: '🌾',
+        description: 'Deine Antworten deuten auf eine mögliche Glutenunverträglichkeit hin. Bei Zöliakie schädigt das Klebereiweiß Gluten die Darmschleimhaut. Eine nicht-zöliakische Glutensensitivität verläuft milder, verursacht aber ähnliche Symptome.',
+        tips: ['Glutenfreie Alternativen testen (Reis, Kartoffeln, Mais)', 'Vor Diätumstellung unbedingt Arzt aufsuchen', 'Diagnose: Bluttest + Darmspiegelung', 'Zöliakie ist eine Autoimmunerkrankung'],
+        maxScore: 6,
+    },
+    histamin: {
+        name: 'Histaminintoleranz',
+        type: 'unvertraeglichkeit',
+        icon: '🍷',
+        description: 'Deine Antworten deuten auf eine mögliche Histaminintoleranz hin. Der Körper kann das aufgenommene Histamin nicht schnell genug abbauen, da das Enzym DAO (Diaminoxidase) nicht ausreichend aktiv ist.',
+        tips: ['Histaminarme Ernährung für 4 Wochen testen', 'Lebensmitteltagebuch führen', 'Frische statt gereifte / konservierte Lebensmittel bevorzugen', 'Arzttest: DAO-Enzymaktivität im Blut'],
+        maxScore: 6,
+    },
+    fruktose: {
+        name: 'Fruktosemalabsorption',
+        type: 'unvertraeglichkeit',
+        icon: '🍎',
+        description: 'Deine Antworten deuten auf eine mögliche Fruktosemalabsorption hin. Der Darm kann Fruchtzucker nicht vollständig aufnehmen, was zu Gärungsprozessen und unangenehmen Beschwerden führt.',
+        tips: ['Fruktosearme Obstarten testen (Himbeeren, Erdbeeren, Bananen)', 'Fruchtsäfte und Honig zunächst meiden', 'Zuckeraustauschstoffe (Sorbit, E420) vermeiden', 'Diagnose: H₂-Atemtest beim Arzt'],
+        maxScore: 4,
+    },
+    pollen: {
+        name: 'Pollenallergie (Heuschnupfen)',
+        type: 'allergie',
+        icon: '🌸',
+        description: 'Deine Antworten deuten auf eine mögliche Pollenallergie hin. Das Immunsystem reagiert übermäßig auf Baum-, Gras- oder Kräuterpollen. Symptome sind saisonal und bei trockenem, windigem Wetter besonders stark.',
+        tips: ['Pollenflug-App nutzen — an starken Tagen drinnen bleiben', 'Pollenfilter im Auto regelmäßig wechseln', 'Nach draußen: Haare waschen, Kleidung wechseln', 'Allergologischen Pricktest machen lassen', 'Hyposensibilisierung kann langfristig helfen'],
+        maxScore: 5,
+    },
+    hausstaub: {
+        name: 'Hausstaubmilbenallergie',
+        type: 'allergie',
+        icon: '🏠',
+        description: 'Deine Antworten deuten auf eine mögliche Hausstaubmilbenallergie hin. Auslöser sind Milbenkot-Partikel in Matratzen, Polstern und Teppichen. Symptome sind ganzjährig und oft morgens am stärksten.',
+        tips: ['Milbendichte Matratzenbezüge (Encasings) verwenden', 'Bettwäsche wöchentlich bei 60 °C waschen', 'Teppiche durch Hartboden ersetzen', 'Luftreiniger mit HEPA-Filter einsetzen'],
+        maxScore: 5,
+    },
+    tiere: {
+        name: 'Tierhaarallergie',
+        type: 'allergie',
+        icon: '🐱',
+        description: 'Deine Antworten deuten auf eine mögliche Tierhaarallergie hin. Auslöser sind meist Proteine in Tierhaaren, Speichel und Hautschuppen (Dander). Katzen sind mit Abstand der häufigste Auslöser.',
+        tips: ['Tiere aus Schlaf- und Wohnräumen fernhalten', 'Nach Tierkontakt Hände waschen, Kleidung wechseln', 'HEPA-Luftreiniger im Haushalt', 'Pricktest beim Allergologen für genaue Auslöser'],
+        maxScore: 5,
+    },
+    nahrung: {
+        name: 'Nahrungsmittelallergie',
+        type: 'allergie',
+        icon: '🥜',
+        description: 'Deine Antworten deuten auf eine mögliche Nahrungsmittelallergie hin (z. B. Nüsse, Eier, Fisch). Im Gegensatz zu einer Intoleranz ist das Immunsystem direkt beteiligt — Reaktionen können sofort und heftig auftreten.',
+        tips: ['Verdächtige Lebensmittel konsequent meiden', 'Zutatenlisten auf Verpackungen immer lesen', 'Allergologischen Bluttest (spezifisches IgE) machen lassen', 'Bei starken Reaktionen: Notfall-Adrenalinpen besprechen', 'Im Restaurant immer aktiv nach Allergenen fragen'],
+        maxScore: 8,
+    },
+};
+
+// ── State ──────────────────────────────────
+let currentQ = 0;
+let scores   = {};
+let selected = [];
+
+// ── Start ──────────────────────────────────
+function startQuiz() {
+    document.getElementById('startScreen').classList.add('hidden');
+    document.getElementById('quizScreen').classList.remove('hidden');
+    render();
+}
+
+// ── Render question ────────────────────────
+function render() {
+    const q     = questions[currentQ];
+    const total = questions.length;
+    const pct   = Math.round((currentQ / total) * 100);
+
+    document.getElementById('stepLabel').textContent    = `${currentQ + 1} / ${total}`;
+    document.getElementById('progressFill').style.width = `${pct}%`;
+    document.getElementById('progressPct').textContent  = `${pct}%`;
+
+    selected = [];
+    const nb = document.getElementById('nextBtn');
+    nb.classList.remove('active');
+
+    let html = `
+        <p class="q-tag">Frage ${currentQ + 1}</p>
+        <p class="q-text">${q.text}</p>`;
+    if (q.subtitle) html += `<p class="q-sub">${q.subtitle}</p>`;
+
+    if (q.type === 'multiple') {
+        html += `<p class="q-multi-hint">Mehrere Antworten möglich</p>`;
+        html += `<div class="options">`;
+        q.options.forEach((opt, i) => {
+            html += `<button class="opt-btn" onclick="toggleMulti(${i})" id="o${i}">
+                <span class="opt-check" id="c${i}"></span>
+                ${opt.emoji ? `<span class="opt-emoji">${opt.emoji}</span>` : ''}
+                <span>${opt.text}</span>
+            </button>`;
+        });
+        html += `</div>`;
+        nb.classList.add('active');
+    } else {
+        html += `<div class="options">`;
+        q.options.forEach((opt, i) => {
+            html += `<button class="opt-btn" onclick="selectSingle(${i})" id="o${i}">
+                <span class="opt-check" id="c${i}"></span>
+                <span>${opt.text}</span>
+            </button>`;
+        });
+        html += `</div>`;
+    }
+
+    document.getElementById('questionArea').innerHTML = html;
+}
+
+// ── Interaction ────────────────────────────
+function toggleMulti(i) {
+    const btn   = document.getElementById(`o${i}`);
+    const check = document.getElementById(`c${i}`);
+    if (selected.includes(i)) {
+        selected = selected.filter(x => x !== i);
+        btn.classList.remove('selected');
+        check.textContent = '';
+    } else {
+        selected.push(i);
+        btn.classList.add('selected');
+        check.textContent = '✓';
+    }
+}
+
+function selectSingle(i) {
+    questions[currentQ].options.forEach((_, j) => {
+        document.getElementById(`o${j}`).classList.remove('selected');
+        document.getElementById(`c${j}`).textContent = '';
+    });
+    document.getElementById(`o${i}`).classList.add('selected');
+    document.getElementById(`c${i}`).textContent = '✓';
+    selected = [i];
+    document.getElementById('nextBtn').classList.add('active');
+}
+
+// ── Score helpers ──────────────────────────
+function addScores(obj) {
+    if (!obj) return;
+    Object.entries(obj).forEach(([k, v]) => { scores[k] = (scores[k] || 0) + v; });
+}
+
+// ── Navigate ───────────────────────────────
+function nextQuestion() {
+    const q = questions[currentQ];
+    if (q.type === 'multiple') {
+        selected.forEach(i => addScores(q.options[i].scores));
+    } else if (selected.length) {
+        addScores(q.options[selected[0]].scores);
+    }
+    currentQ++;
+    if (currentQ >= questions.length) showResults();
+    else render();
+}
+
+// ── Results ────────────────────────────────
+function showResults() {
+    document.getElementById('quizScreen').classList.add('hidden');
+    document.getElementById('resultsScreen').classList.remove('hidden');
+
+    const THRESHOLD = 2;
+    const hits = Object.entries(scores)
+        .filter(([k, v]) => v >= THRESHOLD && resultData[k])
+        .sort((a, b) => (b[1] / resultData[b[0]].maxScore) - (a[1] / resultData[a[0]].maxScore));
+
+    const container = document.getElementById('resultsContainer');
+
+    if (!hits.length) {
+        container.innerHTML = `
+            <div class="no-result">
+                <div style="font-size:48px;margin-bottom:16px">✅</div>
+                <strong>Keine deutlichen Hinweise gefunden.</strong><br><br>
+                Deine Antworten zeigen keine klaren Hinweise auf häufige Allergien oder
+                Unverträglichkeiten. Bei anhaltenden Beschwerden empfehlen wir trotzdem
+                einen Arztbesuch.
+            </div>`;
+        return;
+    }
+
+    const allergien = hits.filter(([k]) => resultData[k].type === 'allergie');
+    const intoleran = hits.filter(([k]) => resultData[k].type === 'unvertraeglichkeit');
+
+    let html = '';
+
+    if (allergien.length) {
+        html += `<p class="results-section-label allergie">Mögliche Allergien</p>`;
+        allergien.forEach(([k, v]) => { html += buildCard(k, v); });
+    }
+    if (intoleran.length) {
+        html += `<p class="results-section-label unvertraeglichkeit">Mögliche Unverträglichkeiten</p>`;
+        intoleran.forEach(([k, v]) => { html += buildCard(k, v); });
+    }
+
+    container.innerHTML = html;
+}
+
+function buildCard(key, score) {
+    const r   = resultData[key];
+    const pct = Math.min(100, Math.round((score / r.maxScore) * 100));
+    const lbl = r.type === 'allergie' ? 'Allergie' : 'Unverträglichkeit';
+    return `
+        <div class="result-item ${r.type}">
+            <div class="result-item-header">
+                <span class="result-icon">${r.icon}</span>
+                <span class="result-name">${r.name}</span>
+                <span class="result-type-tag">${lbl}</span>
+            </div>
+            <p class="result-desc">${r.description}</p>
+            <ul class="result-tips">${r.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+            <div class="match-row">
+                <span class="match-label">Übereinstimmung</span>
+                <div class="match-bar">
+                    <div class="match-fill" style="width:${pct}%"></div>
+                </div>
+                <span class="match-pct">${pct}%</span>
+            </div>
+        </div>`;
+}
+
+// ── Restart ────────────────────────────────
+function restartQuiz() {
+    currentQ = 0; scores = {}; selected = [];
+    document.getElementById('resultsScreen').classList.add('hidden');
+    document.getElementById('quizScreen').classList.remove('hidden');
+    render();
+}
+</script>
+</body>
+</html>
