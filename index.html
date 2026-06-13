@@ -629,6 +629,192 @@
 
         .site-footer a:hover { color: var(--burg); border-color: var(--burg); }
 
+        /* ════════════════════════════════
+           TEASER / EMAIL GATE
+        ════════════════════════════════ */
+        .teaser-top {
+            text-align: center;
+            padding: 48px 40px 28px;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .teaser-count {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--burg);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .teaser-top h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .teaser-top p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .teaser-preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 24px 36px;
+            border-bottom: 1px solid var(--beige);
+        }
+
+        .teaser-chip {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--cream);
+            border: 1px solid var(--beige-line);
+            border-radius: 2px;
+            padding: 10px 16px;
+        }
+
+        .teaser-chip-icon { font-size: 20px; }
+
+        .teaser-chip-name {
+            display: inline-block;
+            width: 90px;
+            height: 14px;
+            background: rgba(44, 26, 26, 0.12);
+            border-radius: 3px;
+            filter: blur(3px);
+        }
+
+        .teaser-form {
+            padding: 28px 36px 8px;
+        }
+
+        .teaser-form h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .teaser-form .teaser-lead {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 24px;
+        }
+
+        .form-group { margin-bottom: 14px; }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid var(--beige-line);
+            border-radius: 1px;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            color: var(--text-dark);
+            background: var(--warm-white);
+            transition: border-color 0.18s;
+            outline: none;
+        }
+
+        .form-group input:focus { border-color: var(--burg); }
+        .form-group input::placeholder { color: var(--text-light); }
+
+        .form-error {
+            font-size: 12px;
+            color: #c0392b;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 20px;
+            background: var(--burg);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 1px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover { background: var(--burg-mid); }
+
+        .form-privacy {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+            margin: 12px 0 28px;
+            line-height: 1.5;
+        }
+
+        /* ════════════════════════════════
+           RESULTS CTA
+        ════════════════════════════════ */
+        .results-cta {
+            margin: 0 36px 24px;
+            background: var(--burg-pale);
+            border: 1px solid #D4A0B0;
+            border-radius: 2px;
+            padding: 24px 24px;
+            text-align: center;
+        }
+
+        .results-cta h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .results-cta p {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .results-cta .btn-cta {
+            display: inline-block;
+            background: var(--burg);
+            color: #fff;
+            border: none;
+            padding: 13px 32px;
+            font-family: 'Lato', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 1px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .results-cta .btn-cta:hover { background: var(--burg-mid); }
+
         .hidden { display: none; }
 
         /* ════════════════════════════════
@@ -719,6 +905,34 @@
         </div>
     </div>
 
+    <!-- TEASER / EMAIL GATE -->
+    <div class="card hidden" id="teaserScreen">
+        <div class="teaser-top">
+            <div class="teaser-count" id="teaserCount">2</div>
+            <h2>mögliche Bereiche gefunden</h2>
+            <p>Deine persönliche Auswertung ist bereit.<br>Du bist nur einen Schritt entfernt.</p>
+        </div>
+        <div class="teaser-preview" id="teaserPreview"></div>
+        <div class="teaser-form">
+            <h3>Deine vollständige Auswertung</h3>
+            <p class="teaser-lead">
+                Erhalte deine detaillierten Ergebnisse mit konkreten Tipps —
+                kostenlos und unverbindlich.
+            </p>
+            <div class="form-group">
+                <label for="inputName">Vorname (optional)</label>
+                <input type="text" id="inputName" placeholder="Dein Vorname" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">E-Mail *</label>
+                <input type="email" id="inputEmail" placeholder="deine@email.de" autocomplete="email">
+                <p class="form-error" id="emailError">Bitte gib eine gültige E-Mail-Adresse ein.</p>
+            </div>
+            <button class="btn-submit" onclick="submitEmail()">Meine Auswertung anzeigen →</button>
+            <p class="form-privacy">🔒 Kein Spam. Du kannst dich jederzeit abmelden.</p>
+        </div>
+    </div>
+
     <!-- RESULTS -->
     <div class="card hidden" id="resultsScreen">
         <div class="results-top">
@@ -727,6 +941,16 @@
             <p>Basierend auf deinen Antworten könnten folgende Bereiche für dich relevant sein.</p>
         </div>
         <div class="results-body" id="resultsContainer"></div>
+        <div class="results-cta">
+            <h3>Möchtest du tiefer einsteigen?</h3>
+            <p>
+                In einem kostenlosen Erstgespräch schauen wir gemeinsam, was hinter
+                deinen Beschwerden steckt — und welche nächsten Schritte für dich sinnvoll sind.
+            </p>
+            <a class="btn-cta" href="https://barbarawolf.li/termine" target="_blank">
+                Kostenloses Erstgespräch buchen
+            </a>
+        </div>
         <div class="disclaimer">
             <strong>Wichtiger Hinweis:</strong> Dieser Test dient ausschließlich zur ersten Orientierung
             und ersetzt keine ärztliche Diagnose. Bei anhaltenden Beschwerden wende dich bitte
@@ -1059,20 +1283,21 @@ function nextQuestion() {
     else render();
 }
 
-// ── Results ────────────────────────────────
-function showResults() {
-    document.getElementById('quizScreen').classList.add('hidden');
-    document.getElementById('resultsScreen').classList.remove('hidden');
+// ── Results: show teaser first ─────────────
+let pendingHits = [];
 
+function showResults() {
     const THRESHOLD = 2;
-    const hits = Object.entries(scores)
+    pendingHits = Object.entries(scores)
         .filter(([k, v]) => v >= THRESHOLD && resultData[k])
         .sort((a, b) => (b[1] / resultData[b[0]].maxScore) - (a[1] / resultData[a[0]].maxScore));
 
-    const container = document.getElementById('resultsContainer');
+    document.getElementById('quizScreen').classList.add('hidden');
 
-    if (!hits.length) {
-        container.innerHTML = `
+    if (!pendingHits.length) {
+        // No matches — skip gate, show result directly
+        document.getElementById('resultsScreen').classList.remove('hidden');
+        document.getElementById('resultsContainer').innerHTML = `
             <div class="no-result">
                 <div style="font-size:48px;margin-bottom:16px">✅</div>
                 <strong>Keine deutlichen Hinweise gefunden.</strong><br><br>
@@ -1083,11 +1308,48 @@ function showResults() {
         return;
     }
 
-    const allergien = hits.filter(([k]) => resultData[k].type === 'allergie');
-    const intoleran = hits.filter(([k]) => resultData[k].type === 'unvertraeglichkeit');
+    // Show teaser with blurred category chips
+    document.getElementById('teaserCount').textContent = pendingHits.length;
+    const preview = document.getElementById('teaserPreview');
+    preview.innerHTML = pendingHits.map(([k]) => `
+        <div class="teaser-chip">
+            <span class="teaser-chip-icon">${resultData[k].icon}</span>
+            <span class="teaser-chip-name"></span>
+        </div>`).join('');
+
+    document.getElementById('teaserScreen').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Email submit ───────────────────────────
+function submitEmail() {
+    const email = document.getElementById('inputEmail').value.trim();
+    const errorEl = document.getElementById('emailError');
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (!valid) {
+        errorEl.style.display = 'block';
+        document.getElementById('inputEmail').focus();
+        return;
+    }
+    errorEl.style.display = 'none';
+
+    // Here you would normally send email + name to your backend / CRM
+    // console.log('Lead:', document.getElementById('inputName').value, email);
+
+    document.getElementById('teaserScreen').classList.add('hidden');
+    renderFullResults();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Render full results ────────────────────
+function renderFullResults() {
+    document.getElementById('resultsScreen').classList.remove('hidden');
+
+    const allergien = pendingHits.filter(([k]) => resultData[k].type === 'allergie');
+    const intoleran = pendingHits.filter(([k]) => resultData[k].type === 'unvertraeglichkeit');
 
     let html = '';
-
     if (allergien.length) {
         html += `<p class="results-section-label allergie">Mögliche Allergien</p>`;
         allergien.forEach(([k, v]) => { html += buildCard(k, v); });
@@ -1097,7 +1359,7 @@ function showResults() {
         intoleran.forEach(([k, v]) => { html += buildCard(k, v); });
     }
 
-    container.innerHTML = html;
+    document.getElementById('resultsContainer').innerHTML = html;
 }
 
 function buildCard(key, score) {
@@ -1125,7 +1387,8 @@ function buildCard(key, score) {
 
 // ── Restart ────────────────────────────────
 function restartQuiz() {
-    currentQ = 0; scores = {}; selected = [];
+    currentQ = 0; scores = {}; selected = []; pendingHits = [];
+    document.getElementById('teaserScreen').classList.add('hidden');
     document.getElementById('resultsScreen').classList.add('hidden');
     document.getElementById('quizScreen').classList.remove('hidden');
     render();
